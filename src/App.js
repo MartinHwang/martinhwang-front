@@ -12,7 +12,7 @@ import home from './components/pages/home/home';
 import techVenue from './components/pages/techVenue/techVenue';
 import projectVenue from './components/pages/ projectVenue/projectVenue'
 import developerVenue from './components/pages/developerVenue';
-
+import nomatchpage from './components/pages/nomatchpage';
 // Layout Component
 import SlideHeader from './components/layout/slideHeader/SlideHeader'
 
@@ -36,6 +36,7 @@ class App extends Component {
                   <AuthRoute exact path="/techvenue" component={techVenue}/>
                   <Route exact path="/projectvenue" component={projectVenue}/>
                   <Route exact path="/developervenue" component={developerVenue}/>
+                  <Route component={nomatchpage}/>
                 </Switch>
               </div>
             </div>

@@ -197,28 +197,31 @@
   .second-third-item img {
     margin-top: 0;
   }
-  .third-first-item {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
-    }
-  .third-first-item img{
-    margin-top: 2em;
+  .third-card-container {
+    display: none;
   }
-  .third-second-item { 
-    grid-column: 1 / 4;
-    grid-row: 2 / 4;
-  }
-  .third-second-item img{ 
-    margin: 2em 0 3em;
-  }
-  .third-third-item {
-    grid-column: 2 / 3;
-    grid-row: 4 / 5;
-    padding: 0 0 2em 0;
-  }
-  .third-third-item img {
-    margin-top: 0;
-  }
+  // .third-first-item {
+  //   grid-column: 2 / 3;
+  //   grid-row: 1 / 2;
+  //   }
+  // .third-first-item img{
+  //   margin-top: 2em;
+  // }
+  // .third-second-item { 
+  //   grid-column: 1 / 4;
+  //   grid-row: 2 / 4;
+  // }
+  // .third-second-item img{ 
+  //   margin: 2em 0 3em;
+  // }
+  // .third-third-item {
+  //   grid-column: 2 / 3;
+  //   grid-row: 4 / 5;
+  //   padding: 0 0 2em 0;
+  // }
+  // .third-third-item img {
+  //   margin-top: 0;
+  // }
   .home-container h6 {
     margin-top: 2em;
   }
