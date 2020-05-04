@@ -20,12 +20,15 @@ import Box from '@material-ui/core/Box';
 // Material Ui Icon
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import SearchIcon from '@material-ui/icons/Search';
-import MailIcon from '@material-ui/icons/Mail';
+// import MailIcon from '@material-ui/icons/Mail';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import AccountBox from '@material-ui/icons/AccountBox';
 
 // Layout
 import Menubar from '../menubar';
+
+// Page
+import Login from '../login';
 
 // Image
 import bluewallpaperbg from '../../../assets/images/bluewallpaperbg.jpg';
@@ -99,7 +102,7 @@ const useStyles = makeStyles((theme) => ({
   // Dummy data for slider 
   const content = [
     {
-      title: 'Full Stack Software Developer ',
+      title: 'martinhwangs.com ',
       description:
       `Martin Hwang is skilled with Figma, react.js, material-ui, javascript, HTML, CSS in a production environment but also proficient with node.js and java spring framework`,
       button: 'Buy now',
@@ -108,7 +111,7 @@ const useStyles = makeStyles((theme) => ({
       userProfile: ''
     },
     {
-      title: 'Full Stack Software Developer',
+      title: 'martinhwang.ca',
       description:
       'Martin Hwang is skilled with Figma, react.js, material-ui, javascript, HTML, CSS in a production environment but also proficient with node.js and java spring framework',
       button: 'Discover',
@@ -131,12 +134,12 @@ const useStyles = makeStyles((theme) => ({
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   
-    const isMenuOpen = Boolean(anchorEl);
+    // const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   
-    const handleProfileMenuOpen = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
+    // const handleProfileMenuOpen = (event) => {
+    //   setAnchorEl(event.currentTarget);
+    // };
   
     const handleMobileMenuClose = () => {
       setMobileMoreAnchorEl(null);
@@ -150,21 +153,31 @@ const useStyles = makeStyles((theme) => ({
     const handleMobileMenuOpen = (event) => {
       setMobileMoreAnchorEl(event.currentTarget);
     };
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleLoginOpen = () => {
+      setOpen(true);
+      handleMenuClose();
+    };
+    const handleLoginClose = () => {
+      setOpen(false);
+    };
   
     const menuId = 'primary-search-account-menu';
-    const renderMenu = (
-      <Menu
-        anchorEl={anchorEl}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        id={menuId}
-        keepMounted
-        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        open={isMenuOpen}
-        onClose={handleMenuClose}>
-        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-      </Menu>
-    );
+    // const renderMenu = (
+    //   <Menu
+    //     anchorEl={anchorEl}
+    //     anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+    //     id={menuId}
+    //     keepMounted
+    //     transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+    //     open={isMenuOpen}
+    //     onClose={handleMenuClose}>
+    //     <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+    //     <MenuItem onClick={handleLoginOpen}>My account</MenuItem>
+    //   </Menu>
+    // );
   
     const mobileMenuId = 'primary-search-account-menu-mobile';
     const renderMobileMenu = (
@@ -176,14 +189,14 @@ const useStyles = makeStyles((theme) => ({
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         open={isMobileMenuOpen}
         onClose={handleMobileMenuClose}>
-        <MenuItem>
+        {/* <MenuItem>
           <IconButton aria-label="show 4 new mails" className={classes.mailButton}>
             <Badge badgeContent={4} color="primary">
               <MailIcon />
             </Badge>
           </IconButton>
           <p>Messages</p>
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem>
           <IconButton aria-label="show 11 new notifications" className={classes.notificationButton}>
             <Badge badgeContent={11} color="primary">
@@ -192,7 +205,7 @@ const useStyles = makeStyles((theme) => ({
           </IconButton>
           <p>Notifications</p>
         </MenuItem>
-        <MenuItem onClick={handleProfileMenuOpen}>
+        <MenuItem onClick={handleLoginOpen}>
           <IconButton
             aria-label="account of current user"
             aria-controls="primary-search-account-menu"
@@ -239,11 +252,11 @@ const useStyles = makeStyles((theme) => ({
                 <Grid item xs>
                   <Box display="flex" justifyContent="flex-end"  pr={2} pt={2}>
                     <div className={classes.sectionDesktop}>
-                      <IconButton aria-label="show 4 new mails" className={classes.mailButton} >
+                      {/* <IconButton aria-label="show 4 new mails" className={classes.mailButton} >
                         <Badge badgeContent={4} color="primary">
                           <MailIcon />
                         </Badge>
-                      </IconButton>
+                      </IconButton> */}
                       <IconButton aria-label="show 17 new notifications" className={classes.notificationButton}>
                         <Badge badgeContent={17} color="primary">
                           <NotificationsIcon />
@@ -254,7 +267,7 @@ const useStyles = makeStyles((theme) => ({
                         aria-label="account of current user"
                         aria-controls={menuId}
                         aria-haspopup="true"
-                        onClick={handleProfileMenuOpen}
+                        onClick={handleLoginOpen}
                         className={classes.accountBoxButton}>
                         <AccountBox/>
                       </IconButton>
@@ -272,7 +285,7 @@ const useStyles = makeStyles((theme) => ({
                   </Box>
                 </Grid>
                  {renderMobileMenu}
-                 {renderMenu}
+                 {/* {renderMenu} */}
               </Grid>
             
               <div className="inner">
@@ -283,6 +296,7 @@ const useStyles = makeStyles((theme) => ({
             </div>
           ))}
         </Slider>
+        <Login open={open} onClose={handleLoginClose}/>
       </div>
     );
   }

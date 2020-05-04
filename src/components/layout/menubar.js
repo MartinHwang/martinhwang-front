@@ -37,6 +37,12 @@ const useStyles = makeStyles({
   },
   menuButton: {
     color: "#424242",
+  },
+  primaryMenuItem: {
+    marginBottom: "0.2em"
+  },
+  secondaryMenuItem: {
+    marginBottom: "0.2em"
   }
 
 });
@@ -117,7 +123,7 @@ export default function LongMenu() {
         </CardActionArea>
       </Card>
       <Link to="/">
-        <MenuItem onClick={handlePrimaryMenuClose}>
+        <MenuItem onClick={handlePrimaryMenuClose} className={classes.primaryMenuItem}>
           Home
         </MenuItem>
       </Link>
@@ -125,6 +131,7 @@ export default function LongMenu() {
         aria-controls="secondary-menu-tech"
         aria-haspopup="true"
         onClick={handleSecondaryMenuDeveloperOpen}
+        className={classes.primaryMenuItem}
       >
         Developer Venue
       </MenuItem>
@@ -132,12 +139,14 @@ export default function LongMenu() {
         aria-controls="secondary-menu-tech"
         aria-haspopup="true"
         onClick={handleSecondaryMenuTechOpen}
+        className={classes.primaryMenuItem}
       >
         Tech Venue</MenuItem>
       <MenuItem
         aria-controls="secondary-menu-project"
         aria-haspopup="true"
         onClick={handleSecondaryMenuProjectOpen}
+        className={classes.primaryMenuItem}
       >
         Project Venue</MenuItem>
     </Menu>
@@ -160,10 +169,32 @@ export default function LongMenu() {
         }
       }}
     >
-      <Link to="/developervenue"><MenuItem onClick={handleSecondaryMenuDeveloperClose}>summary</MenuItem></Link>
-      <MenuItem onClick={handleSecondaryMenuDeveloperClose}>work experience</MenuItem>
-      <MenuItem onClick={handleSecondaryMenuDeveloperClose}>education</MenuItem>
-      <MenuItem onClick={handleSecondaryMenuDeveloperClose}>volunteer</MenuItem>
+      <Link to="/developervenue">
+        <MenuItem 
+          onClick={handleSecondaryMenuDeveloperClose}
+          className={classes.secondaryMenuItem}
+        >
+          summary
+        </MenuItem>
+      </Link>
+      <MenuItem 
+        onClick={handleSecondaryMenuDeveloperClose}
+        className={classes.secondaryMenuItem}
+      >
+        work experience
+      </MenuItem>
+      <MenuItem 
+        onClick={handleSecondaryMenuDeveloperClose}
+        className={classes.secondaryMenuItem}
+      >
+        education
+      </MenuItem>
+      <MenuItem 
+        onClick={handleSecondaryMenuDeveloperClose}
+        className={classes.secondaryMenuItem}
+      >
+        volunteer
+      </MenuItem>
     </Menu>
   );
   // SecondaryMenuTech
@@ -183,10 +214,10 @@ export default function LongMenu() {
         }
       }}
     >
-      <MenuItem onClick={handleSecondaryMenuTechClose}>css</MenuItem>
-      <MenuItem onClick={handleSecondaryMenuTechClose}>javascript</MenuItem>
-      <MenuItem onClick={handleSecondaryMenuTechClose}>react</MenuItem>
-      <MenuItem onClick={handleSecondaryMenuTechClose}>java</MenuItem>
+      <MenuItem onClick={handleSecondaryMenuTechClose} className={classes.secondaryMenuItem}>css</MenuItem>
+      <MenuItem onClick={handleSecondaryMenuTechClose} className={classes.secondaryMenuItem}>javascript</MenuItem>
+      <MenuItem onClick={handleSecondaryMenuTechClose} className={classes.secondaryMenuItem}>react</MenuItem>
+      <MenuItem onClick={handleSecondaryMenuTechClose} className={classes.secondaryMenuItem}>java</MenuItem>
     </Menu>
   );
 
@@ -207,10 +238,10 @@ export default function LongMenu() {
         }
       }}
     >
-      <MenuItem onClick={handleSecondaryMenuProjectClose}>martinhwang.ca</MenuItem>
-      <MenuItem onClick={handleSecondaryMenuProjectClose}>expressivecafe.com</MenuItem>
-      <MenuItem onClick={handleSecondaryMenuProjectClose}>martinhwangs.com</MenuItem>
-      <MenuItem onClick={handleSecondaryMenuProjectClose}>proudtale.com</MenuItem>
+      <MenuItem onClick={handleSecondaryMenuProjectClose} className={classes.secondaryMenuItem}>martinhwang.ca</MenuItem>
+      <MenuItem onClick={handleSecondaryMenuProjectClose} className={classes.secondaryMenuItem}>expressivecafe.com</MenuItem>
+      <MenuItem onClick={handleSecondaryMenuProjectClose} className={classes.secondaryMenuItem}>martinhwangs.com</MenuItem>
+      <MenuItem onClick={handleSecondaryMenuProjectClose} className={classes.secondaryMenuItem}>proudtale.com</MenuItem>
     </Menu>
   );
 

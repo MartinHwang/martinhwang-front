@@ -137,50 +137,70 @@ class home extends Component {
         let mm = String(today.getMonth() + 1).padStart(2, '0');
         let yyyy = today.getFullYear();
         today = mm + '/' + dd + '/' + yyyy;
+        let covid19OutbreakUpdate = (
+            <Fragment>
+                <h6>COVID-19 Outbreak Update: {today} </h6>
+                <div>
+                    {!isLoading ? (
+                        covid19Total.map(total => {
+                            const { confirmed, deaths, recovered } = total;
+                            return (
+                                <div className="covid19" key={confirmed}>
+                                    <img src={covid19WorldMap} alt="covid19 update" width="90" height="55"/> 
+                                    <div>
+                                        <p>confirmed {confirmed}</p>
+                                        <p>deaths {deaths}</p>
+                                        <p>recovered {recovered}</p>                                        
+                                    </div>
+                                </div>
+                            );
+                        })
+                    ) : (
+                        <h2>Loading ...</h2>
+                    )}
+                </div>
+                <div>
+                    {!isLoading ? (
+                        covid19Canada.map(canada => {
+                            const { confirmed, deaths, recovered } = canada;
+                            return (
+                                <div className="covid19" key={confirmed}>
+                                    <img src={covid19CanadaMap} alt="covid19Canada update"  width="95" height="75"/> 
+                                    <div className="covid19CanadaDiv">
+                                        <p>confirmed {confirmed}</p>
+                                        <p>deaths {deaths}</p>
+                                        <p>recovered {recovered}</p>                                        
+                                    </div>
+                                </div>
+                            );
+                        })
+                    ) : (
+                        <h2>Loading ...</h2>
+                    )}
+                </div>
+            </Fragment>
+        );
+        let firstBinaryCodeDialog = (
+            <Dialog 
+                open={this.state.openDialog}
+                onClose={this.handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                    {"First binary means Software Developer Martin Hwang"}
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        To decrypt mouse hover or hold down the binary for a second
+                    </DialogContentText>
+                </DialogContent>
+            </Dialog>
+        );
         return (
             <Grid>
                 <div className="home-container">
-                    <Fragment>
-                        <h6>COVID-19 Outbreak Update: {today} </h6>
-                        <div>
-                            {!isLoading ? (
-                                covid19Total.map(total => {
-                                    const { confirmed, deaths, recovered } = total;
-                                    return (
-                                        <div className="covid19" key={confirmed}>
-                                            <img src={covid19WorldMap} alt="covid19 update" width="90" height="55"/> 
-                                            <div>
-                                                <p>confirmed {confirmed}</p>
-                                                <p>deaths {deaths}</p>
-                                                <p>recovered {recovered}</p>                                        
-                                            </div>
-                                        </div>
-                                    );
-                                })
-                            ) : (
-                                <p>Loading ...</p>
-                            )}
-                        </div>
-                        <div>
-                            {!isLoading ? (
-                                covid19Canada.map(canada => {
-                                    const { confirmed, deaths, recovered } = canada;
-                                    return (
-                                        <div className="covid19" key={confirmed}>
-                                            <img src={covid19CanadaMap} alt="covid19Canada update"  width="95" height="75"/> 
-                                            <div className="covid19CanadaDiv">
-                                                <p>confirmed {confirmed}</p>
-                                                <p>deaths {deaths}</p>
-                                                <p>recovered {recovered}</p>                                        
-                                            </div>
-                                        </div>
-                                    );
-                                })
-                            ) : (
-                                <p>Loading ...</p>
-                            )}
-                        </div>
-                    </Fragment>
+                    {covid19OutbreakUpdate}
                     <div className="card-container">
                         <div className="first-item">
                             <Box display="flex" justifyContent="center">
@@ -204,21 +224,7 @@ class home extends Component {
                                     01101001 01101110 00100000 01101000 01110111 01100001 01101110 01100111
                                 </p>
                             </Tooltip>
-                            <Dialog 
-                                open={this.state.openDialog}
-                                onClose={this.handleClose}
-                                aria-labelledby="alert-dialog-title"
-                                aria-describedby="alert-dialog-description"
-                            >
-                                <DialogTitle id="alert-dialog-title">
-                                    {"First binary means Software Developer Martin Hwang"}
-                                </DialogTitle>
-                                <DialogContent>
-                                    <DialogContentText id="alert-dialog-description">
-                                        To decrypt mouse hover or hold down the binary for a second
-                                    </DialogContentText>
-                                </DialogContent>
-                            </Dialog>
+                            {firstBinaryCodeDialog}    
                             <Tooltip 
                                 title={proficientTooltip1}
                                 placement='top-start'
@@ -272,13 +278,13 @@ class home extends Component {
                             </Tooltip>
                         </div>
                         <div className="second-third-item">
-                            <img src={figmalog} alt="figma"/>
+                            <img src={materialuilog} alt="material"/>
                         </div>
                     </div>
                     <div className="third-card-container">
                         <div className="third-first-item">
                             <Box display="flex" justifyContent="center">
-                                <img src={materialuilog} alt="material"/>
+                                <img src={figmalog} alt="figma"/>
                             </Box>
                         </div>
                         <div className="third-second-item">
